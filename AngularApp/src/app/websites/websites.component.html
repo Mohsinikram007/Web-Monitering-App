@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content white-text" style="min-height: 95vh; height: auto;">
+        <div class="row" id="bgrow">
+          <div class="col s5">
+            <form #webForm="ngForm" (ngSubmit)="onSubmit(webForm)">
+              <!-- <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="employeeService.selectedEmployee._id"> -->
+              <input
+                type="hidden"
+                name="_id"
+                #id="ngModel"
+                [(ngModel)]="websitesService.selectedWebsites._id"
+              />
+              <div class="row">
+                <div class="input-field col s12">
+                  <!-- <input type="text" name="name" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name" placeholder="Enter full name" required> -->
+                  <input
+                    type="text"
+                    name="name"
+                    #name="ngModel"
+                    [(ngModel)]="websitesService.selectedWebsites.name"
+                    placeholder="Enter Full webiste URL"
+                    required
+                  />
+                  <label
+                    >URL :
+                    <label class="red-text">*</label>
+                  </label>
+                </div>
+              </div>
+              <!-- <div class="row">
+                <div class="input-field col s12">
+                  <input
+                    type="text"
+                    name="status"
+                    #status="ngModel"
+                    [(ngModel)]="websitesService.selectedWebsites.status"
+                    placeholder="Status"
+                    required
+                  />
+                  <label
+                    >Status :
+                    <label class="red-text">*</label>
+                  </label>
+                </div>
+              </div> -->
+              <div class="row">
+                <div class="input-field col l12 center">
+                  <button class="btn teal darken-3" type="submit">Check</button>
+                  <!-- <button class="btn btn-custom right" type="submit" [disabled]="!webform.valid">Submit</button> -->
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="col s6 right">
+            <table class="responsive-table highlight">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>URL</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tr *ngFor ="let w of websitesService.websites ">
+                <td></td>
+                <td> {{w.name}}</td>
+                <td>{{w.status}}</td>
+               
+                <!-- <td>{{web.status}}</td> -->
+                <td>
+                  
+                  <a class="action-btn" (click)="onDelete(w._id,webForm)">
+                    <i class="material-icons">delete</i>
+                  </a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
